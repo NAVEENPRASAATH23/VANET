@@ -1,0 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package vehicle;
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
+/**
+ *
+ * @author Elcot
+ */
+public class Main {
+    public static void main(String[] args) 
+    {        
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        try
+        {                    			
+            UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
+            
+            int vehid=Integer.parseInt(JOptionPane.showInputDialog(new JFrame(),"Enter the Vehicle Id:").trim());            
+            
+            VehicleFrame vf=new VehicleFrame(vehid);
+            vf.setTitle("Vehicle - "+vehid);
+            vf.setVisible(true);
+            vf.setResizable(false);
+            vf.jLabel1.setText("Vehicle - "+vehid);
+            
+            VehicleReceiver vr=new VehicleReceiver(vf,vehid);
+            vr.start();
+	}
+	catch (Exception ex)
+	{            
+            //System.out.println(ex);
+	}   
+    }
+}
